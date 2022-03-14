@@ -1,15 +1,84 @@
 <html>
-<h1>Slime Typer 4</h1>
-<a href="SlimeTyper4/?wordlist=aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL21pa2VkZzEvZ2FtZS1TbGltZVR5cGVyL21haW4vd29yZGxpc3RzLzIyMDMwNy50eHQ=">March 7, 2022 Word List</a><br>
-<a href="SlimeTyper4/?wordlist=aHR0cHM6Ly9taWtlZGcxLmdpdGh1Yi5pby9nYW1lLVNsaW1lVHlwZXIvd29yZGxpc3RzLzIyMDMxNC50eHQ=">March 14, 2022 Word List</a><br>
-<br><br>
-<style type="text/css">
-.dreamloLBTable { border-collapse:collapse;text-align:center;width: 200px; }
-.dreamloLBTable th { border-bottom: 1px solid #EEEEEE;font-weight:bold;margin:0;padding:4px; }
-.dreamloLBTable td { border-bottom: 1px solid#EEEEEE;margin:0;padding:4px; }
-</style>
-<br><br><br>
-<a href="SlimeTyper4/?wordlist=aHR0cDovLzEyNy4wLjAuMTo4MDgwL3dvcmRsaXN0cy8yMjAzMDcudHh0">Local Word List</a><br>
+<script>
+    let slime4 = "SlimeTyper4/?wordlist="
 
+    function encodedGitWordList(filename) {
+        return slime4 + btoa("https://mikedg1.github.io/game-SlimeTyper/wordlists/" + filename)
+
+    }
+
+    function encodedLocalWordList(filename) {
+        return slime4 + btoa("http://127.0.0.1:8080/wordlists/" + filename)
+    }
+
+    // javascript:document.location.href=getUrl();
+</script>
+<h1>Slime Typer 4</h1>
+<style type="text/css">
+    .dreamloLBTable {
+        border-collapse: collapse;
+        text-align: center;
+        width: 200px;
+    }
+
+    .dreamloLBTable th {
+        border-bottom: 1px solid #EEEEEE;
+        font-weight: bold;
+        margin: 0;
+        padding: 4px;
+    }
+
+    .dreamloLBTable td {
+        border-bottom: 1px solid #EEEEEE;
+        margin: 0;
+        padding: 4px;
+    }
+</style>
+
+Word Lists
+<p id="Remote"></p>
+
+<!--Scoreboard-->
+<h2>High Scores</h2>
 <script src="https://www.dreamlo.com/lb/622e08258f40bc123c228992/js" type="text/javascript"></script>
+<br>
+<h6>Local Testing
+<p id="Local"></p>
+</h6>
+
+<script>
+    function makeLink(location, url, title) {
+        let ele = document.getElementById(location);
+        // Create anchor element.
+        let a = document.createElement('a');
+
+        // Create the text node for anchor element.
+        let link = document.createTextNode(title);
+
+        // Append the text node to anchor element.
+        a.appendChild(link);
+
+        // Set the href property.
+        a.href = url;
+
+        // Append the anchor element to the body.
+        // document.body.appendChild(a);
+        ele.appendChild(a);
+        ele.appendChild(document.createElement('br'))
+        // remote.ap
+    }
+
+    function l(file, title) {
+        filename = file + ".txt"
+        makeLink("Local", encodedLocalWordList(filename), title)
+        makeLink("Remote", encodedGitWordList(filename), title)
+    }
+
+    function addAllLinks() {
+        l("220307",  "March 7, 2022")
+        l("220314",  "March 14, 2022")
+    }
+
+    addAllLinks()
+</script>
 </html>
