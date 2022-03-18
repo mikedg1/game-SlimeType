@@ -1,14 +1,14 @@
 <html>
 <script>
-    let slime4 = "SlimeTyper4/?wordlist="
-
+    let slime4 = "SlimeTyper4/"
+    let wordListUrlPart = "?wordlist="
     function encodedGitWordList(filename) {
-        return slime4 + btoa("https://mikedg1.github.io/game-SlimeTyper/wordlists/" + filename)
+        return slime4 + wordListUrlPart + btoa("https://mikedg1.github.io/game-SlimeTyper/wordlists/" + filename)
 
     }
 
     function encodedLocalWordList(filename) {
-        return slime4 + btoa("http://127.0.0.1:8080/wordlists/" + filename)
+        return slime4 + wordListUrlPart + btoa("http://127.0.0.1:8080/wordlists/" + filename)
     }
 
     function genUrl() {
@@ -86,18 +86,36 @@ Use any word list in the game. Enter the URL to the plain text word list, then c
         // remote.ap
     }
 
+    // File based word list
     function l(file, title) {
         filename = file + ".txt"
         makeLink("Local", encodedLocalWordList(filename), title)
         makeLink("Remote", encodedGitWordList(filename), title)
     }
 
+    function paramWordListUrl(wordList, privateKey, publicKey) {
+        return slime4 + `?wordListParam=${wordList}&prKey=${privateKey}&puKey=${publicKey}`
+    }
+
+    // Url based word list
+    function q(words, title, privateKey, publicKey) {
+        // makeLink("Local", title, privateKey, publicKey) // Don't need local since the word lists dont matter about the source?
+        makeLink("Remote", paramWordListUrl(words, privateKey, publicKey), title)
+    }
+
+    // For general word list param based links
+    function w(title, link) {
+        makeLink("Remote", link, title)
+    }
     function addAllLinks() {
+        // TODO: add private and public key to these
         l("220307",  "March 7, 2022")
         l("220314",  "March 14, 2022 - Partial")
         l("220314-Full",  "March 14, 2022 - Full")
         l("220314-vhard",  "Vincent Hard - March 14, 2022")
         l("i",  "Vincent I - March 14, 2022")
+
+        w("Slime Rancher", "/SlimeTyper4/?wordListParam=tar,slime,tabby,gray,grey,pink,crystal,rock,excavator,ranch,silo,beatrix,vac,ocean,boomer,radiation,dervish&puKey=62337qq58s40op123p2n02s1&prKey=cmR3LjD5q0nBf62FFUl5Rt1Di4L9zVIRPXZuNrFDa1qj")
     }
 
     addAllLinks()
