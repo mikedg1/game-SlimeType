@@ -49,21 +49,21 @@ Word Lists
 <p id="Remote"></p>
 
 <!--Scoreboard-->
-<h2>High Scores</h2>
+<!-- <h2>High Scores</h2>
 <script src="https://www.dreamlo.com/lb/622e08258f40bc123c228992/js" type="text/javascript"></script>
-
+ -->
 <br>
-Use any word list in the game. Enter the URL to the plain text word list, then copy the resulting URL.
+<!-- Use any word list in the game. Enter the URL to the plain text word list, then copy the resulting URL.
 <br>
 <input type="text" id="urlInput" />
 <input type="submit" value="Get Link" onclick="genUrl()"/>
 <p id="GeneratedUrls"></p>
-
+ -->
 <br>
-<h6>Local Testing
+<!-- <h6>Local Testing
 <p id="Local"></p>
 </h6>
-
+ -->
 <script>
     function makeLink(location, url, title) {
         let ele = document.getElementById(location);
@@ -89,7 +89,7 @@ Use any word list in the game. Enter the URL to the plain text word list, then c
     // File based word list
     function l(file, title) {
         filename = file + ".txt"
-        makeLink("Local", encodedLocalWordList(filename), title)
+        //makeLink("Local", encodedLocalWordList(filename), title)
         makeLink("Remote", encodedGitWordList(filename), title)
     }
 
@@ -109,13 +109,17 @@ Use any word list in the game. Enter the URL to the plain text word list, then c
     }
     function addAllLinks() {
         // TODO: add private and public key to these
-        l("220307",  "March 7, 2022")
-        l("220314",  "March 14, 2022 - Partial")
-        l("220314-Full",  "March 14, 2022 - Full")
-        l("220314-vhard",  "Vincent Hard - March 14, 2022")
-        l("i",  "Vincent I - March 14, 2022")
-
+        // Below don't work because I switched domains and they load from pages! CORS issue
+        // l("220307",  "March 7, 2022")
+        // l("220314",  "March 14, 2022 - Partial")
+        // l("220314-Full",  "March 14, 2022 - Full")
+        // l("220314-vhard",  "Vincent Hard - March 14, 2022")
+        // l("i",  "Vincent I - March 14, 2022")
+        w("03-07-22", "SlimeTyper4/?wordListParam=dish,rich,knife,while,clip,nice,nine,stick,mice,gift,flip,thin,drive,give,five,prize,hike,kick,swim,spill,dice&puKey=622r08258s40op123p228992&prKey=Fk3Jt_0FSxFLQ8HsHPF-XNCgksxLC0zRBZ4VDKLxOk-D")
+        w("03-14-22", "SlimeTyper4/?wordListParam=rock,job,click,joke,rope,some,stove,cone,hope,hot,home,come,spot,woke,nose,those,hose,pot,hole,chop,broke&puKey=6233689r8s40op123p29r52p&prKey=Sqtswnhhu0FbaWbs2EAWWND8hvmKP7xx-4UMUDb6K72N")
+        w("Hard", "SlimeTyper4/?wordListParam=uurfhu,vtsdgf,hfunvh,bvfbtd,hhgjjh,ufjjf,idscuf,mdinmv,krujgf,rjvgju,bimckn,emkjkn,li,etsfs,gh,jk,ol,ik,yc,funbvh,ujrfj,nhfvdn,unvhdg,hbchbv,vgnkjf,j,s,jkn,nbgh,dxvxcd,fghc,fhcjf&puKey=623368998s40op123p29r521&prKey=DFWeZDFyI0d7UDVUwlaxvNLbta9uOG1HrxZQiFVOGjnj")
         w("Slime Rancher", "/SlimeTyper4/?wordListParam=tar,slime,tabby,gray,grey,pink,crystal,rock,excavator,ranch,silo,beatrix,vac,ocean,boomer,radiation,dervish,far,far,range,thousand,light,years,away,wrangle,farm,plort,market,hoops,plucky&puKey=62337qq58s40op123p2n02s1&prKey=cmR3LjD5q0nBf62FFUl5Rt1Di4L9zVIRPXZuNrFDa1qj")
+        w("Testing Tuesday", "SlimeTyper4/?wordListParam=game,dev,typing,Legend,zelda,mario,dead,zombies,epistory,gdc,epic,nintendo,sony,xbox,switch,Testing,Tuesday,NYC,elden,rings,wwe,rogue,legacy,house,of,the,dead,mavis,beacon,tutor&puKey=62337qpq8s40op123p2n02qs&prKey=cFqcoAtsJxvijEkp7B3rbtlnMlIXcofx-26MOk9Cle6t")
     }
 
     addAllLinks()
